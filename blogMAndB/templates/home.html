@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>!DOCTYPE</title>
+   <meta charset="utf-8">
+   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+   <link href="{% static 'css/main.css' %}" rel="stylesheet">
+   <link href="{% static 'css/font_awesome.css' %}" rel="stylesheet">
+ </head>
+ <body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+			<div class="container">
+			  <a class="navbar-brand" href="#">M&B</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-lg-auto">
+			      <li class="nav-item ">
+			        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#explore">Explore</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#about">About</a>
+			      </li>
+				  <li class="nav-item">
+			        <a class="nav-link" href="#blog">Blog</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#moviesAndBooks">Movies & Books</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#feedback">Feedback</a>
+			      </li>
+			    </ul>
+			  </div>
+	        </div>
+        </nav>
+	</header>
+
+	<div class="jumbotron jumbotron-fluid height50p banner" id="home">
+	  <div class="container h100">
+		    <div class="contentBox h100">
+		    	<div>
+		    		<h1>Imagination</h1>
+					<p> Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+
+						Sea in laudem ornatus abhorreant. Eum electram ocurreret cu. Habemus interesset cotidieque ius ex, pri fugit oratio comprehensam no. Eu mel omnis nullam. Mea ut veri melius platonem, usu nulla vidisse numquam ea.
+
+						Ei pri posse vituperatoribus. Eu doctus suavitate deseruisse his, regione pericula evertitur ius te, his liber commodo ea. Verear patrioque urbanitas id vix. In ancillae molestiae vix, per nibh cibo an, utroque aliquando at pri. Sea no patrioque efficiendi, sed in exerci audiam. Sit mutat euismod te, sit unum justo meliore eu.
+					</p>
+                     {% block logout %}{% endblock %}
+		    	</div>
+		  	</div>
+
+		</div>
+	</div>
+
+	<section class="section1" id='explore'>
+		<div class="container">
+			<div class="row">
+				<div class="offset-sm-2 col-sm-8">
+					<div class="headerText text-center">
+						<h2> Explore the world of movies and books</h2>
+						<p>
+							In nec putant diceret partiendo, an atqui fierent mea. Erroribus incorrupte sea ne. Affert graecis mediocrem mea no. Hinc viris docendi in ius. Pro et nonumy perfecto. Malorum honestatis et sea, at eos discere intellegebat voluptatibus, vix utamur labitur interesset eu.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="placeBox" data-aos="flip-down">
+						<div class="imgBox">
+							<img src="{% static 'images/for_movies_middle.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+							<h3>Try this one<br><a href="{% url 'create_movies' %}"><span>To share your taste of movies</span></a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="placeBox" data-aos="flip-down">
+						<div class="imgBox">
+							<img src="{% static 'images/backpack-book.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+                            <h3>Try this one<br><a href="{% url 'create_books' %}"><span>To share your taste of books</span></a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="placeBox" data-aos="flip-down">
+						<div class="imgBox">
+							<img src="{% static 'images/for_getstart_top.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+							<h3>Try this one<br><span>For see other notes</span></h3> 
+						</div>
+					</div>
+				</div>
+			</div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} mt-4">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block user_content %}{% endblock %}
+		</div>
+	</section>
+
+	<section class="section2" id='about'>
+		<div class="container h100">
+			<div class="contentBox h100">
+				<div>
+					<h1>About us</h1>
+					<p id="ReadText">Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+
+						Sea in laudem ornatus abhorreant. Eum electram ocurreret cu. Habemus interesset cotidieque ius ex, pri fugit oratio comprehensam no. Eu mel omnis nullam. Mea ut veri melius platonem, usu nulla vidisse numquam ea.
+
+						Ei pri posse vituperatoribus. Eu doctus suavitate deseruisse his, regione pericula evertitur ius te, his liber commodo ea. Verear patrioque urbanitas id vix. In ancillae molestiae vix, per nibh cibo an, utroque aliquando at pri. Sea no patrioque efficiendi, sed in exerci audiam. Sit mutat euismod te, sit unum justo meliore eu.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="blog" id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="offset-sm-2 col-sm-8">
+					<div class="headerText text-center">
+						<h2>Our latest post</h2>
+						<p>  Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed  voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+
+							Sea in laudem ornatus abhorreant. Eum electram ocurreret cu. Habemus interesset cotidieque ius ex, pri fugit oratio comprehensam no. Eu mel omnis nullam. Mea ut veri melius platonem, usu nulla vidisse numquam ea.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+                {% for post in latest_post_books %}
+				<div class="col-sm-6">
+					<div class="blogPost" data-aos="fade-up" data-aos-duration="3000">
+						<div class="imgBox">
+							<img src="{% static 'images/latest_post_books.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+							<h1>{{ post.title }}</h1>
+							<p>  {{ post.content }} </p>
+							<a href="{% url 'postsOfBooks' %}" class="btn btn-secondary">Read more</a>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+
+                {% for post in latest_post_movies %}
+				<div class="col-sm-6">
+					<div class="blogPost" data-aos="fade-up" data-aos-duration="3000">
+						<div class="imgBox">
+							<img src="{% static 'images/latest_post_movies.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+							<h1>{{ post.title }}</h1>
+							<p>  {{ post.content }} </p>
+							<a href="{% url 'postsOfMovies' %}" class="btn btn-secondary">Read more</a>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+
+	<section class="moviesAndBooks" id="moviesAndBooks">
+		<div class="container h100">
+			<div class="row">
+				<div class="offset-sm-2 col-sm-8">
+					<div class="headerText">
+						<h2>Our blog community</h2>
+						<p>  Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed  voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+
+							Sea in laudem ornatus abhorreant. Eum electram ocurreret cu. Habemus interesset cotidieque ius ex, pri fugit oratio comprehensam no. Eu mel omnis nullam. Mea ut veri melius platonem, usu nulla vidisse numquam ea.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="blogPost" data-aos="zoom-in">
+						<div class="imgBox">
+							<img src="{% static 'images/cinema-curve.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+							<a href="{% url 'postsOfMovies' %}"><h2>Movies blog</h2></a>
+							<p>  Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed  voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="blogPost" data-aos="zoom-in">
+						<div class="imgBox" >
+							<img src="{% static 'images/stack-books.jpg' %}" class="img-fluid">
+						</div>
+						<div class="content">
+
+							<a href="{% url 'postsOfBooks' %}"><h2>Books blog</h2></a>
+							<p>  Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed  voluptaria 		temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="feedback" id="feedback">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="headerText text-center">
+						<h2> Contact us</h2>
+						<p> Lorem ipsum dolor sit amet, ne eum simul iisque commune, omnium vituperata neglegentur no duo. An sed  voluptaria temporibus. Ei cibo facilisis vim. Te modo recusabo molestiae mel, malis concludaturque vel ea.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="offset-sm-2 col-sm-8">
+					<form action="{% url 'feedback' %}" method="post">
+                        {% csrf_token %}
+						<div class="form-group" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+							<label>Name</label>
+							<input type="text" id="FeedUsername" class="form-control">
+						</div>
+						<div class="form-group" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+							<label>Email</label>
+							<input type="text" id="FeedEmail" class="form-control">
+						</div>
+						<div class="form-group" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+							<label>Message</label>
+							<textarea class="form-control textarea" id="FeedMessage"></textarea>
+						</div>
+						<div class="form-group text-center" data-aos="zoom-in-up">
+							<button class="btn btn-secondary" id="sendFeedback" type="submit">Send</button>
+						</div>
+					</form>
+				</div>
+			</div>
+            <div id="FeedbackState"></div>
+		</div>
+	</section>
+
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="sci">
+						<!-- fontawesome -->
+						<li> <a href="#"> <i class="fa fa-facebook"></i></a></li>
+						<li> <a href="#"> <i class="fa fa-twitter"></i></a></li>
+						<li> <a href="#"> <i class="fa fa-google-plus"></i></a></li>
+						<li> <a href="#"> <i class="fa fa-linkedin"></i></a></li>
+						<li> <a href="#"> <i class="fa fa-instagram"></i></a></li>
+					</ul>
+					<p class="cpryt">&copy; Copyright 2019 <a href="#">M&B</a> </p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/feedbackAJAX.js' %}"></script>
+<script>
+  AOS.init();
+</script>
+<script type="text/javascript">
+	$(document).scroll(function(){
+		$('.navbar').toggleClass('scrolled', $(this).scrollTop() > $('.navbar').height());
+	});
+</script>
+ </body> 
+</html>

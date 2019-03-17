@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block logout %}
+    <h1>You have been logged out</h1>
+    <div class="border-top pt-3 ">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'login' %}">Log In Again</a>
+        </small>
+    </div>
+{% endblock %}

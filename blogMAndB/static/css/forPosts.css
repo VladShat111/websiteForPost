@@ -1,0 +1,145 @@
+body {
+  background: url(../images/aboutUs.jpg) no-repeat;
+    background-size: cover;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+}
+
+header{
+	position: relative;
+	z-index: 1000000;
+}
+p{
+	font-size: 1.15rem;
+}
+
+.navbar.bg-light{
+	background: transparent !important;
+	transition: 0.5s;
+}
+
+.navbar.scrolled{
+	background: #000 !important;
+	transition: 0.5s;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8) !important;
+}
+
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: rgba(255,255,255,1) !important;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:visited {
+    color: rgba(255,255,255,1) !important;
+    font-size: 2.5rm;
+    font-weight: 300;
+}
+
+.banner{
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: url(../images/banner.jpg);
+	background-size: cover;
+	margin-bottom: 0 !important;
+}
+
+.banner:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(#000, transparent);
+	pointer-events: none;
+}
+
+.banner:after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(360deg, #000, transparent);
+	pointer-events: none;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #000000;
+}
+
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  margin-left: 100px;
+    margin-right: 100px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+

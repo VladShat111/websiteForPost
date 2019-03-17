@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/forPosts.css' %}" rel="stylesheet">
+   <link href="{% static 'css/font_awesome.css' %}" rel="stylesheet">
+</head>
+<body>
+<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+			<div class="container">
+			  <a class="navbar-brand" href="#">M&B</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-lg-auto">
+			      <li class="nav-item ">
+			        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+			      </li>
+                    {% if user.is_authenticated %}
+				  <li class="nav-item">
+			        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+			      </li>
+                  <li class="nav-item">
+			        <a class="nav-link" href="{% url 'create_books' %}">CreateBooksPost</a>
+			      </li>
+                  <li class="nav-item">
+			        <a class="nav-link" href="{% url 'create_movies' %}">CreateMoviesPost</a>
+			      </li>
+                         <li class="nav-item">
+			        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+			      </li>
+                    {% else %}
+                  <li class="nav-item">
+			        <a class="nav-link" href="{% url 'login' %}">Login</a>
+			      </li>
+                  <li class="nav-item">
+			        <a class="nav-link" href="{% url 'register' %}">Register</a>
+			      </li>
+                    {% endif %}
+                  <li>
+                  </li>
+			    </ul>
+			  </div>
+	        </div>
+        </nav>
+	</header>
+    <div  class="container">
+        {% block content %}{% endblock %}
+    </div>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script>
+  AOS.init();
+</script>
+<script type="text/javascript">
+	$(document).scroll(function(){
+		$('.navbar').toggleClass('scrolled', $(this).scrollTop() > $('.navbar').height());
+	});
+</script>
+</body>
+</html>
