@@ -51,6 +51,13 @@
         </nav>
 	</header>
     <div  class="container">
+        {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}"style="margin-left: 100px; margin-right: 100px;">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         {% block content %}{% endblock %}
     </div>
 <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
