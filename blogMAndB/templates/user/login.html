@@ -2,8 +2,8 @@
 {% load crispy_forms_tags %}
 
 {% block user_content %}
-    <div class="content-section mr-lg-5" id="loginForm" >
-        <form action="#" method="post">
+    <div class="content-section mr-lg-5"  >
+        <form action="#" method="post" id="loginForm">
             {% csrf_token %}
             <fieldset class="form-group">
                  <legend class="border-bottom mb-4">Log In</legend>
@@ -11,9 +11,10 @@
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Login</button>
+                <a class="fa fa-google-plus" id="oauth2_plus" href="{% url 'social:begin' 'google-oauth2' %}"></a>
             </div>
         </form>
-        <div class="border-top pt-3">
+        <div class="border-top pt-3" style="margin-right: 600px">
             <small class="text-muted">
                 Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </small>

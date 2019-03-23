@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogMAndB',
     'crispy_forms',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -65,10 +66,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '311683387839-vke7b3j5e20it93qn7jhmpfi0cfufh0o.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'dQIOk4PWYwezQksx0kHwFbFp'
+
+
 
 WSGI_APPLICATION = 'websiteForPost.wsgi.application'
 

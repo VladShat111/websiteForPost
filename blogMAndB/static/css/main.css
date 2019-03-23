@@ -333,6 +333,25 @@ footer{
 .cpryt a:hover{
 	color: #0C1D72; 
 }
+
+#loginForm{
+	margin-right: 600px;
+}
+#registerForm{
+	margin-right: 600px;
+}
+
+#oauth2_plus{
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 40px;
+	color: #777;
+	font-size: 2em;
+}
+#oauth2_plus:hover{
+	color: #721c24;
+}
+
 @media (min-width: 992px){
 	.navbar-expand-lg .navbar-nav .nav-link{
 		padding-right: 1rem;
