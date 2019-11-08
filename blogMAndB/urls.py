@@ -15,7 +15,9 @@ from .views import (base,
                     PostDeleteViewBooks,
                     PostDeleteViewMovies,
                     UserPostsOfBooksView,
-                    UserPostsOfMoviesView)
+                    UserPostsOfMoviesView,
+                    add_comment_books,
+                    add_comment_movies)
 
 
 
@@ -38,5 +40,7 @@ urlpatterns = [
     path('postDetailMovies/<int:pk>/update/', PostUpdateViewMovies.as_view(), name='update_movies'),
     path('postDetailBooks/<int:pk>/delete/', PostDeleteViewBooks.as_view(), name='delete_books'),
     path('postDetailMovies/<int:pk>/delete/', PostDeleteViewMovies.as_view(), name='delete_movies'),
+    path('comment/book/<int:id>/', add_comment_books, name='comment_books'),
+    path('comment/movie/<int:id>/', add_comment_movies, name='comment_movies'),
 ]
 

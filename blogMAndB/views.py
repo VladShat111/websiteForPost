@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserUpdateForm, UserProfileUpdateForm
 from .models import PostForBooks, PostForMovies, Profile, Feedback
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import logging
 
 logger = logging.getLogger('django')
@@ -91,8 +93,19 @@ class PostsOfBooksView(ListView):
 
 
 class PostDetailViewBooks(DetailView):
-    model = PostForBooks
-    template_name = 'post/post_detail_books.html'
+
+    def get(self, request, *args, **kwargs):
+        books = get_object_or_404(PostForBooks, pk=kwargs['pk'])
+        comment_books = books.commentforbook_set.all()
+
+        context = {'object': books,
+                   'comment_books': comment_books}
+
+        return render(request, 'post/post_detail_books.html', context)
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['Coments'] = PostForMovies.philosophy
 
 
 class PostCreateViewBooks(LoginRequiredMixin, CreateView):
@@ -162,9 +175,17 @@ class PostsOfMoviesView(ListView):
     ordering = ['-pub_date']
     paginate_by = 3
 
+
 class PostDetailViewMovies(DetailView):
-    model = PostForMovies
-    template_name = 'post/post_detail_movies.html'
+
+    def get(self, request, *args, **kwargs):
+        movies = get_object_or_404(PostForMovies, pk=kwargs['pk'])
+        comment_movies = movies.commentformovie_set.all()
+
+        context = {'object': movies,
+                   'comment_movies': comment_movies}
+
+        return render(request, 'post/post_detail_movies.html', context)
 
 
 class PostCreateViewMovies(LoginRequiredMixin, CreateView):
@@ -204,3 +225,17 @@ class PostDeleteViewMovies(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+def add_comment_movies(request, id):
+    comment = get_object_or_404(PostForMovies, pk=id)
+    comment.commentformovie_set.create(author=request.POST['comment_auth_mov'], text=request.POST['comment_text_mov'])
+
+    return HttpResponseRedirect(reverse('detail_movies', args=(id,)))
+
+
+def add_comment_books(request, id):
+    comment = get_object_or_404(PostForBooks, pk=id)
+    comment.commentforbook_set.create(author=request.POST['comment_auth_book'], text=request.POST['comment_text_book'])
+
+    return HttpResponseRedirect(reverse('detail_books', args=(id,)))

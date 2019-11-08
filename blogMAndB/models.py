@@ -42,6 +42,26 @@ class PostForBooks(models.Model):
         return reverse('detail_books', kwargs={'pk': self.pk})
 
 
+class CommentForBook(models.Model):
+    post_for_book = models.ForeignKey(PostForBooks, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
+    text = models.TextField()
+    pub_date = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return self.author
+
+
+class CommentForMovie(models.Model):
+    post_for_movie = models.ForeignKey(PostForMovies, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
+    text = models.TextField()
+    pub_date = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return self.author
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(default='default.jpg', upload_to='images_profile', null=True, blank=True)

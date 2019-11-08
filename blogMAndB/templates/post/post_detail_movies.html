@@ -17,4 +17,40 @@
             <p class="article-content">{{ object.content }}</p>
       </div>
     </article>
+    <br><br>
+   <article class="media content-section">
+        <form method="post" class="form-text" action="{% url 'comment_movies' object.id %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <input class="form-control" required name="comment_auth_mov" placeholder="Enter your name">
+                    <br>
+                </div>
+
+                <div class="col-md-12">
+                    <textarea class="form-control textarea" required name="comment_text_mov" placeholder="Enter your comment"></textarea>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-secondary" type="submit">Comment</button>
+        </form>
+    </article>
+     <br><br>
+    {% if comment_movies %}
+        {% for comment in comment_movies %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{ comment.author }}</a>
+                        <small class="text-muted">{{ comment.pub_date|date:'F d, Y' }}</small>
+                        <p class="article-content">{{ comment.text }}</p>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+     <article class="media content-section">
+        <h2 class="article-title">No Comments (( Be first! </h2>
+    </article>
+    {% endif %}
 {% endblock %}

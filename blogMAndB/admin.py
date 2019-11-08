@@ -1,23 +1,25 @@
 from django.contrib import admin
-from .models import Feedback, PostForMovies, PostForBooks, Profile
+from .models import Feedback, PostForMovies, PostForBooks, Profile, CommentForBook, CommentForMovie
 # Register your models here.
 
 
+@admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'message')
 
 
+@admin.register(PostForMovies, PostForBooks)
 class PostForMandBAdmin(admin.ModelAdmin):
     list_display = ('title', 'content', 'author')
 
 
+@admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'image')
 
 
-admin.site.register(Feedback, FeedbackAdmin)
-admin.site.register(PostForMovies, PostForMandBAdmin)
-admin.site.register(PostForBooks, PostForMandBAdmin)
-admin.site.register(Profile, ProfileAdmin)
+@admin.register(CommentForBook, CommentForMovie)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'text', 'pub_date')
 
 
